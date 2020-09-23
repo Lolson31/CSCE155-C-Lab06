@@ -75,7 +75,7 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
 
 int toSepia(int *r, int *g, int *b)
 {
-  //TODO: implement
+  //TODO: test
 
   //Vars
   int sepRed;
@@ -136,6 +136,11 @@ int toSepia(int *r, int *g, int *b)
   {
     sepBlue = 0;
   }
+
+  //Set RGB vals
+  *r = sepRed;
+  *g = sepGreen;
+  *b = sepBlue;
 
   return (NO_ERROR);
 }
