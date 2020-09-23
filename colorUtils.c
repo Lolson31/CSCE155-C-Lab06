@@ -14,36 +14,35 @@ int min(int a, int b, int c) {
 int toGrayScale(int *r, int *g, int *b, Mode mode)
 {
   //TODO: implement
-  int userCmd;
-  char inLoop = y;
+  int red;
+  int green;
+  int blue;
 
-  printf ("Would you like to use the Average (1), Lighness (2), or Luminosity (3) method?\n)");
-  scanf("%d\n", userCmd);
+  r = &red;
+  g = &green;
+  b = &blue;
 
-  while (inLoop == y)
+  if (mode == 0)
   {
-    if (userCmd == 1)
-    {
-      return (r + g + b) / 3;
-      inLoop = "n";
-    }
-    else if (userCmd == 2)
-    {
-      return (min (r, g, b) + max (r, g, b)) / 2;
-      inLoop = "n";
-    }
-    else if (userCmd == 3)
-    {
-      return (0.21 * r) + (0.72 * g) + (0.07 * b);
-      inLoop = "n";
-    }
-    else
-    {
-      printf("Please input a valid number\n", );
-    }
+    return (red + green + blue) / 3;
+  }
+  else if (mode == 1)
+  {
+    return (min (red, green, blue) + max (red, green, blue)) / 2;
+  }
+  else if (mode == 2)
+  {
+    return (0.21 * red) + (0.72 * green) + (0.07 * blue);
+  }
+  else
+  {
+    printf("Please input a valid number\n", );
   }
 }
-
-int toSepia(int *r, int *g, int *b) {
+/**
+int toSepia(int *r, int *g, int *b)
+{
   //TODO: implement
+
 }
+*/
