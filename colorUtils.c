@@ -81,7 +81,7 @@ int toSepia(int *r, int *g, int *b)
   }
 
   //Non-Error Code
-  double sepRed, sepGreen, sepBlue
+  double sepRed, sepGreen, sepBlue;
 
   sepRed = round((0.393 * *r) + (0.769 * *g) + (0.189 * *b));
 
