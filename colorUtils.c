@@ -25,17 +25,17 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
   int b = &blue;
 
   //Error Tests
-  if (*r == NULL || *g == NULL || *b == NULL)
+  if (red == NULL || green == NULL || blue == NULL)
   {
     return (NULL_ERROR);
   }
 
-  if (*r > 255 || *g > 255 || *b > 255)
+  if (red > 255 || green > 255 || blue > 255)
   {
     return (ESCEEDS_VAL_ERROR);
   }
 
-  if (*r < 0 || *g < 0 || *b < 0)
+  if (red < 0 || green < 0 || blue < 0)
   {
     return (NEGATIVE_VAL_ERROR);
   }
@@ -49,24 +49,24 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
   if (mode == 0)
   {
     *r = (red + green + blue) / 3;
-    *g = *r;
-    *b = *r;
+    *g = red;
+    *b = red;
 
     return (NO_ERROR);
   }
   else if (mode == 1)
   {
     *r = (min (red, green, blue) + max (red, green, blue)) / 2;
-    *g = *r;
-    *b = *r;
+    *g = red;
+    *b = red;
 
     return (NO_ERROR);
   }
   else if (mode == 2)
   {
     *r = (0.21 * red) + (0.72 * green) + (0.07 * blue);
-    *b = *r;
-    *g = *r;
+    *b = red;
+    *g = red;
 
     return (NO_ERROR);
   }
@@ -87,27 +87,27 @@ int toSepia(int *r, int *g, int *b)
   *b = &sepBlue;
 
   //Error Tests
-  if (*r == NULL || *g == NULL || *b == NULL)
+  if (sepRed == NULL || sepGreen == NULL || sepBlue == NULL)
   {
     return (NULL_ERROR);
   }
 
-  if (*r > 255 || *g > 255 || *b > 255)
+  if (sepRed > 255 || sepGreen > 255 || sepBlue > 255)
   {
     return (ESCEEDS_VAL_ERROR);
   }
 
-  if (*r < 0 || *g < 0 || *b < 0)
+  if (sepRed < 0 || sepGreen < 0 || sepBlue < 0)
   {
     return (NEGATIVE_VAL_ERROR);
   }
 
   //Non-Error Code
-  sepRed = (0.393 * *r) + (0.769 * *g) + (0.189 * *b);
+  *r = (0.393 * sepRed) + (0.769 * sepGreen) + (0.189 * sepBlue);
 
-  sepGreen = (0.349 * *r) + (0.686 * *g) + (0.168 * *b);
+  *g = (0.349 * sepRed) + (0.686 * sepGreen) + (0.168 * sepBlue);
 
-  sepBlue = (0.272 * *r) + (0.534 * *g) + (0.131 * *b);
+  *b = (0.272 * sepRed) + (0.534 * sepGreen) + (0.131 * sepBlue);
 
   //Check for Sepia Color vals > 255 or < 0
   if (sepRed > 255)
