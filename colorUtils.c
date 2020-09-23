@@ -15,7 +15,6 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
 {
   //TODO: check
 
-
   //Error Tests
   if (r == NULL || g == NULL || b == NULL)
   {
@@ -38,23 +37,28 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
   }
 
   //Non-Error Code
+  double grayScale;
+
   if (mode == 0)
   {
-    *r = (*r + *g + *b) / 3;
-    *g = *r;
-    *b = *r;
+    grayScale = round ((*r + *g + *b) / 3.0);
+    *r = grayScale;
+    *g = grayScale;
+    *b = grayScale;
   }
   else if (mode == 1)
   {
-    *r = (min (*r, *g, *b) + max (*r, *g, *b)) / 2;
-    *g = *r;
-    *b = *r;
+    grayScale = round ((max (*r, *g, *b) + min (*r, *g, *b)) / 2.0);
+    *r = grayScale;
+    *g = grayScale;
+    *b = grayScale;
   }
   else if (mode == 2)
   {
-    *r = (0.21 * *r) + (0.72 * *g) + (0.07 * *b);
-    *b = *r;
-    *g = *r;
+    grayScale = round ((0.21 * *r) + (0.72 * *g) + (0.07 * *b));
+    *r = grayScale;
+    *g = grayScale;
+    *b = grayScale;
   }
 
   return (NO_ERROR);
@@ -62,8 +66,6 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
 
 int toSepia(int *r, int *g, int *b)
 {
-  //TODO: test
-
   //Error Tests
   if (r == NULL || g == NULL || b == NULL)
   {
