@@ -76,5 +76,66 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
 int toSepia(int *r, int *g, int *b)
 {
   //TODO: implement
-  
+
+  //Vars
+  int sepRed;
+  int sepGreen;
+  int sepBlue;
+
+  *r = &sepRed;
+  *g = &sepGreen;
+  *b = &sepBlue;
+
+  //Error Tests
+  if (*r == NULL || *g == NULL || *b == NULL)
+  {
+    return (NULL_ERROR);
+  }
+
+  if (*r > 255 || *g > 255 || *b > 255)
+  {
+    return (ESCEEDS_VAL_ERROR);
+  }
+
+  if (*r < 0 || *g < 0 || *b < 0)
+  {
+    return (NEGATIVE_VAL_ERROR);
+  }
+
+  //Non-Error Code
+  sepRed = (0.393 * *r) + (0.769 * *g) + (0.189 * *b);
+
+  sepGreen = (0.349 * *r) + (0.686 * *g) + (0.168 * *b);
+
+  sepBlue = (0.272 * *r) + (0.534 * *g) + (0.131 * *b);
+
+  //Check for Sepia Color vals > 255 or < 0
+  if (sepRed > 255)
+  {
+    sepRed = 255;
+  }
+  if (sepRed < 0)
+  {
+    sepRed = 0;
+  }
+
+  if (sepGreen > 255)
+  {
+    sepGreen = 255;
+  }
+  if (sepGreen < 0)
+  {
+    sepGreen = 0;
+  }
+
+  if (sepBlue > 255)
+  {
+    sepBlue = 255;
+  }
+  if (sepBlue < 0)
+  {
+    sepBlue = 0;
+  }
+
+  return (NO_ERROR);
 }
