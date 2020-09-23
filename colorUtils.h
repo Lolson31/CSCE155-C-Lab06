@@ -8,6 +8,14 @@ typedef enum {
   LUMINOSITY
 } Mode;
 
+ typedef enum {
+   NO_ERROR,
+   NO_MODE_ERROR,
+   NULL_ERROR,
+   ESCEEDS_VAL_ERROR,
+   NEGATIVE_VAL_ERROR
+ }
+
 #endif /* MODE_H */
 
 /**

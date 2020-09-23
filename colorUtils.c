@@ -13,36 +13,68 @@ int min(int a, int b, int c) {
 
 int toGrayScale(int *r, int *g, int *b, Mode mode)
 {
-  //TODO: implement
+  //TODO: check
+
+  //Vars
   int red;
   int green;
   int blue;
 
-  r = &red;
-  g = &green;
-  b = &blue;
+  int r = &red;
+  int g = &green;
+  int b = &blue;
 
+  //Error Tests
+  if (*r == NULL || *g == NULL || *b == NULL)
+  {
+    return (NULL_ERROR);
+  }
+
+  if (*r > 255 || *g > 255 || *b > 255)
+  {
+    return (ESCEEDS_VAL_ERROR);
+  }
+
+  if (*r < 0 || *g < 0 || *b < 0)
+  {
+    return (NEGATIVE_VAL_ERROR);
+  }
+
+  if (mode > 4)
+  {
+    return (NO_MODE_ERROR);
+  }
+
+  //Non-Error Code
   if (mode == 0)
   {
-    return (red + green + blue) / 3;
+    *r = (red + green + blue) / 3;
+    *g = *r;
+    *b = *r;
+
+    return (NO_ERROR);
   }
   else if (mode == 1)
   {
-    return (min (red, green, blue) + max (red, green, blue)) / 2;
+    *r = (min (red, green, blue) + max (red, green, blue)) / 2;
+    *g = *r;
+    *b = *r;
+
+    return (NO_ERROR);
   }
   else if (mode == 2)
   {
-    return (0.21 * red) + (0.72 * green) + (0.07 * blue);
+    *r = (0.21 * red) + (0.72 * green) + (0.07 * blue);
+    *b = *r;
+    *g = *r;
+
+    return (NO_ERROR);
   }
-  else
-  {
-    printf("Please input a valid number\n", );
-  }
+
 }
-/**
+
 int toSepia(int *r, int *g, int *b)
 {
   //TODO: implement
-
+  
 }
-*/
