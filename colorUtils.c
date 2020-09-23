@@ -81,39 +81,46 @@ int toSepia(int *r, int *g, int *b)
   }
 
   //Non-Error Code
-  *r = (0.393 * *r) + (0.769 * *g) + (0.189 * *b);
+  double sepRed, sepGreen, sepBlue
 
-  *g = (0.349 * *r) + (0.686 * *g) + (0.168 * *b);
+  sepRed = round((0.393 * *r) + (0.769 * *g) + (0.189 * *b));
 
-  *b = (0.272 * *r) + (0.534 * *g) + (0.131 * *b);
+  sepGreen = round((0.349 * *r) + (0.686 * *g) + (0.168 * *b));
+
+  sepBlue = round((0.272 * *r) + (0.534 * *g) + (0.131 * *b));
 
   //Check for Sepia Color vals > 255 or < 0
-  if (*r > 255)
+  if (sepRed > 255)
   {
-    *r = 255;
+    sepRed = 255;
   }
-  if (*r < 0)
+  if (sepRed < 0)
   {
-    *r = 0;
-  }
-
-  if (*g > 255)
-  {
-    *g = 255;
-  }
-  if (*g < 0)
-  {
-    *g = 0;
+    sepRed = 0;
   }
 
-  if (*b > 255)
+  if (sepGreen > 255)
   {
-    *b = 255;
+    sepGreen = 255;
   }
-  if (*b < 0)
+  if (sepGreen < 0)
   {
-    *b = 0;
+    sepGreen = 0;
   }
+
+  if (sepBlue > 255)
+  {
+    sepBlue = 255;
+  }
+  if (sepBlue < 0)
+  {
+    sepBlue = 0;
+  }
+
+  //set pointers to sep colors
+  *r = sepRed;
+  *g = sepGreen;
+  *b = sepBlue;
 
   return (NO_ERROR);
 }
