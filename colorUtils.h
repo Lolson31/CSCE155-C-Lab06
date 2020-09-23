@@ -14,7 +14,7 @@ typedef enum {
    NULL_ERROR,
    ESCEEDS_VAL_ERROR,
    NEGATIVE_VAL_ERROR
- }
+ } Error;
 
 #endif /* MODE_H */
 
