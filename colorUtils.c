@@ -15,27 +15,19 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
 {
   //TODO: check
 
-  //Vars
-  int red;
-  int green;
-  int blue;
-
-  *r = &red;
-  *g = &green;
-  *b = &blue;
 
   //Error Tests
-  if (red == NULL || green == NULL || blue == NULL)
+  if (r == NULL || g == NULL || b == NULL)
   {
     return (NULL_ERROR);
   }
 
-  if (red > 255 || green > 255 || blue > 255)
+  if (*r > 255 || *g > 255 || *b > 255)
   {
     return (ESCEEDS_VAL_ERROR);
   }
 
-  if (red < 0 || green < 0 || blue < 0)
+  if (*r < 0 || *g < 0 || *b < 0)
   {
     return (NEGATIVE_VAL_ERROR);
   }
@@ -48,99 +40,80 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
   //Non-Error Code
   if (mode == 0)
   {
-    *r = (red + green + blue) / 3;
-    *g = red;
-    *b = red;
-
-    return (NO_ERROR);
+    *r = (*r + *g + *b) / 3;
+    *g = *r;
+    *b = *r;
   }
   else if (mode == 1)
   {
-    *r = (min (red, green, blue) + max (red, green, blue)) / 2;
-    *g = red;
-    *b = red;
-
-    return (NO_ERROR);
+    *r = (min (*r, *g, *b) + max (*r, *g, *b)) / 2;
+    *g = *r;
+    *b = *r;
   }
   else if (mode == 2)
   {
-    *r = (0.21 * red) + (0.72 * green) + (0.07 * blue);
-    *b = red;
-    *g = red;
-
-    return (NO_ERROR);
+    *r = (0.21 * *r) + (0.72 * *g) + (0.07 * *b);
+    *b = *r;
+    *g = *r;
   }
 
+  return (NO_ERROR);
 }
 
 int toSepia(int *r, int *g, int *b)
 {
   //TODO: test
 
-  //Vars
-  int sepRed;
-  int sepGreen;
-  int sepBlue;
-
-  *r = &sepRed;
-  *g = &sepGreen;
-  *b = &sepBlue;
-
   //Error Tests
-  if (sepRed == NULL || sepGreen == NULL || sepBlue == NULL)
+  if (r == NULL || g == NULL || b == NULL)
   {
     return (NULL_ERROR);
   }
 
-  if (sepRed > 255 || sepGreen > 255 || sepBlue > 255)
+  if (*r > 255 || *g > 255 || *b > 255)
   {
     return (ESCEEDS_VAL_ERROR);
   }
 
-  if (sepRed < 0 || sepGreen < 0 || sepBlue < 0)
+  if (*r < 0 || *g < 0 || *b < 0)
   {
     return (NEGATIVE_VAL_ERROR);
   }
 
   //Non-Error Code
-  *r = (0.393 * sepRed) + (0.769 * sepGreen) + (0.189 * sepBlue);
+  *r = (0.393 * *r) + (0.769 * *g) + (0.189 * *b);
 
-  *g = (0.349 * sepRed) + (0.686 * sepGreen) + (0.168 * sepBlue);
+  *g = (0.349 * *r) + (0.686 * *g) + (0.168 * *b);
 
-  *b = (0.272 * sepRed) + (0.534 * sepGreen) + (0.131 * sepBlue);
+  *b = (0.272 * *r) + (0.534 * *g) + (0.131 * *b);
 
   //Check for Sepia Color vals > 255 or < 0
-  if (sepRed > 255)
+  if (*r > 255)
   {
-    sepRed = 255;
+    *r = 255;
   }
-  if (sepRed < 0)
+  if (*r < 0)
   {
-    sepRed = 0;
-  }
-
-  if (sepGreen > 255)
-  {
-    sepGreen = 255;
-  }
-  if (sepGreen < 0)
-  {
-    sepGreen = 0;
+    *r = 0;
   }
 
-  if (sepBlue > 255)
+  if (*g > 255)
   {
-    sepBlue = 255;
+    *g = 255;
   }
-  if (sepBlue < 0)
+  if (*g < 0)
   {
-    sepBlue = 0;
+    *g = 0;
   }
 
-  //Set RGB vals
-  *r = sepRed;
-  *g = sepGreen;
-  *b = sepBlue;
+  if (*b > 255)
+  {
+    *b = 255;
+  }
+  if (*b < 0)
+  {
+    *b = 0;
+  }
 
   return (NO_ERROR);
 }
