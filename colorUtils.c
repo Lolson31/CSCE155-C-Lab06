@@ -20,9 +20,9 @@ int toGrayScale(int *r, int *g, int *b, Mode mode)
   int green;
   int blue;
 
-  int r = &red;
-  int g = &green;
-  int b = &blue;
+  *r = &red;
+  *g = &green;
+  *b = &blue;
 
   //Error Tests
   if (red == NULL || green == NULL || blue == NULL)
